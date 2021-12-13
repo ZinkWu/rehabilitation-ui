@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/ZinkWu/rehabilitation-ui/issues"
   },
-  "homepage": "https://github.com/ZinkWu/rehabilitation-ui#readme"
+  "homepage": "https://github.com/ZinkWu/rehabilitation-ui#readme",
+  "dependencies": {
+    "vue": "^2.6.14"
+  }
 }
