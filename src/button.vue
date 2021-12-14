@@ -1,7 +1,7 @@
 <template>
-  <button class="r-button" :class="{ [`icon-${iconPosition}`]: true }">
-    <r-icon class="icon" :name="icon" v-if="icon" ></r-icon>
-    <r-icon class="loading" name="loading"></r-icon>
+  <button @click="$emit('click')" class="r-button" :class="{ [`icon-${iconPosition}`]: true }">
+    <r-icon  v-if="icon && !loading" class="icon" :name="icon"></r-icon>
+    <r-icon v-if="loading" class="loading icon" name="loading"></r-icon>
     <div class="content">
       <slot />
     </div>
@@ -11,6 +11,11 @@
 <script>
 export default {
   props: {
+    loading: {
+      type: Boolean,
+      default: false,
+      required: false
+    },
     icon: {
       type: String,
       requierd: false,
