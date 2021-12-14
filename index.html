@@ -22,7 +22,7 @@
       --border-radius: 4px;
       --color: #333;
       --border-color: #999;
-      --border-color-hover: #666
+      --border-color-hover: #666;
     }
 
     #app {
@@ -38,9 +38,7 @@
     <r-button :loading="loading" @click="loading = !loading">click me</r-button>
 
     <r-button-group>
-      <div>
-        <r-button icon="left">上一页</r-button>
-      </div>
+      <r-button icon="left">上一页</r-button>
       <r-button>更多</r-button>
       <r-button icon="right" icon-position="right">下一页</r-button>
     </r-button-group>
