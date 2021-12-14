@@ -1,6 +1,7 @@
 <template>
   <button class="r-button" :class="{ [`icon-${iconPosition}`]: true }">
     <r-icon class="icon" :name="icon" v-if="icon" ></r-icon>
+    <r-icon class="loading" name="loading"></r-icon>
     <div class="content">
       <slot />
     </div>
@@ -30,6 +31,11 @@ export default {
 </script>
 
 <style lang="scss">
+@keyframes spin {
+  0% {transform: rotate(0deg);}
+  100% {transform: rotate(360deg);}
+}
+
 .r-button {
   color: #000;
   font-size: var(--font-size);
@@ -52,5 +58,9 @@ export default {
   &:hover {border-color: var(--border-color-hover);}
   &:active {background: var(--button-active-bg);}
   &:focus {outline: none;}
+
+  .loading{
+    animation: spin 1s linear infinite;
+  }
 }
 </style>
