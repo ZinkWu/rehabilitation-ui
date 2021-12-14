@@ -1,5 +1,5 @@
 <template>
-  <button class="r-button">hi</button>
+  <button class="r-button">按钮</button>
 </template>
 
 <script>
