@@ -22,5 +22,8 @@
   "homepage": "https://github.com/ZinkWu/rehabilitation-ui#readme",
   "dependencies": {
     "vue": "^2.6.14"
+  },
+  "devDependencies": {
+    "parcel": "^2.0.1"
   }
 }
