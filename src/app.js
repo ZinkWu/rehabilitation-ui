@@ -2,7 +2,11 @@ import Vue from 'vue'
 import Button from './button.vue'
 import Icon from './icon'
 import ButtonGroup from './button-group'
-import { expect } from 'chai'
+import chai from 'chai'
+import spies from 'chai-spies'
+
+const expect = chai.expect
+chai.use(spies)
 
 Vue.component('r-button', Button)
 Vue.component('r-icon', Icon)
@@ -94,10 +98,11 @@ new Vue({
     }
   })
   vm.$mount()
-  vm.$on('click', function(){
-    expect(1).to.eq(1)
-  })
+  let spy = chai.spy(function() {})
+
+  vm.$on('click', spy)
   vm.$el.click()
+  expect(spy).to.have.been.called()
   vm.$el.remove()
   vm.$destroy()
 }
