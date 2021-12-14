@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>rehabilitation</title>
+  <style>
+    *{margin: 0;padding: 0;box-sizing: border-box;}
+    :root{
+      --button-height: 32px;
+      --button-bg: white;
+      --font-size: 14px;
+      --button-active-bg: #eee;
+      --border-radius: 4px;
+      --color: #333;
+      --border-color: #999;
+      --border-color-hover: #666
+    }
+    #app{
+      padding: 20px;
+    }
+  </style>
+
+  <style>
+    .r-button {
+      font-size: var(--font-size);
+      height: var(--button-height);
+      padding: 0 1em;
+      font: inherit;
+      border-radius: var(--border-radius);
+      border: 1px solid var(--border-color);
+      background: var(--button-bg);
+    }
+    .r-button:hover{
+      border-color: var(--border-color-hover)
+    }
+    .r-button:active{
+      background: var(--button-active-bg);
+    }
+    .r-button:focus{
+      outline: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <r-button></r-button>
+  </div>
+
+  <script src="./node_modules/vue/dist/vue.min.js"></script>
+  <script src="./button.js"></script>
+
+  <script>
+    new Vue({
+      el: "#app",
+      data() {
+        return {
+          message: "hello"
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
