@@ -5,7 +5,16 @@
 </template>
 
 <script>
-export default {};
+export default {
+  mounted(){
+    for(let node of this.$el.children){
+      let name = node.nodeName.toLowerCase()
+      if(name !== 'button'){
+        console.warn(`The child element of <r-button-group> should be <buttom>, but you are using <${name}>`)
+      }
+    }
+  }
+};
 </script>
 
 <style lang="scss">
