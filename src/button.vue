@@ -42,17 +42,11 @@ export default {
 }
 
 .r-button {
-  color: #000;
-  font-size: var(--font-size);
-  height: var(--button-height);
-  padding: 0 1em;
-  border-radius: var(--border-radius);
-  border: 1px solid var(--border-color);
-  background: var(--button-bg);
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  vertical-align: middle;
+  color: #000;font-size: var(--font-size);height: var(--button-height);
+  border-radius: var(--border-radius);background: var(--button-bg);
+  border: 1px solid var(--border-color);display: inline-flex;padding: 0 1em;
+  justify-content: center;align-items: center;vertical-align: middle;
+
   > .icon {order: 1; margin-right: .1em}
   > .content {order: 2;}
   &.icon-right {

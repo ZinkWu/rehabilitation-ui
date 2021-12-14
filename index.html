@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>rehabilitation</title>
-  <script src="//at.alicdn.com/t/font_3015044_pb6amaom0di.js"></script>
+  <script src="//at.alicdn.com/t/font_3015044_by60mekn2xi.js"></script>
   <style>
     * {
       margin: 0;
@@ -38,6 +38,12 @@
     <r-button icon="loading" icon-position="right" :loading="loading" @click="loading = !loading">设置</r-button>
     <r-button icon="settings">按钮</r-button>
     <r-button :loading="loading" @click="loading = !loading">click me</r-button>
+
+    <r-button-group>
+      <r-button icon="left">上一页</r-button>
+      <r-button>更多</r-button>
+      <r-button icon="right" icon-position="right">下一页</r-button>
+    </r-button-group>
   </div>
 
   <script src="./src/app.js"></script>
