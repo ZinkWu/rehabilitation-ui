@@ -9,7 +9,11 @@
 </template>
 
 <script>
+import Icon from './icon'
 export default {
+  components: {
+    rIcon: Icon
+  },
   props: {
     loading: {
       type: Boolean,

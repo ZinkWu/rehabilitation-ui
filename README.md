@@ -5,7 +5,7 @@
 
 ## 使用
 
-使用本框架前，请在 global css 中开启 border-box
+使用前，请在 global css 中开启 border-box
 ```css
 *{
   box-sizing: border-box;
