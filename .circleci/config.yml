@@ -9,7 +9,7 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: circleci/node:16.13-browsers
+      - image: circleci/node:16.13.0-browsers
 workflows: 
   build_and_test:
     jobs:
@@ -18,6 +18,6 @@ workflows:
         # This is the node version to use for the `cimg/node` tag
         # Relevant tags can be found on the CircleCI Developer Hub
         # https://circleci.com/developer/images/image/cimg/node
-        version: '16.1.0'
+        version: '16.13.0'
         # If you are using yarn, change the line below from "npm" to "yarn"
         pkg-manager: npm
