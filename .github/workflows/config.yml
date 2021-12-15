@@ -22,6 +22,7 @@ jobs:
           node-version: '16.13.0'
   build-and-test:
     runs-on: ubuntu-latest
+    needs: node-install
     steps:
       - run: npm install
       - run: npm test
