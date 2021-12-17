@@ -4,26 +4,25 @@
 
 ## 介绍
 
-辞职休息了三个多月，本项目为编程康复训练。
+辞职休息了五个多月，本项目为编程康复训练。
 
-## 开始使用
-TODO
 ## 安装
 
-```shell
-npm install rehabilitation-ui
+  ```bash
+  npm install --save rehabilitation-ui
 
-# or
+  # or
 
-yarn add rehabilitation-ui
-```
+  yarn add rehabilitation-ui
+  ```
 
-```css
-/* 使用前，请在 global css 中开启 border-box */
-*{
-  box-sizing: border-box;
-}
-```
+## 开始使用
+  使用前，请在 global css 中开启 border-box
+  ```css
+  *,*::before,*::after{
+    box-sizing: border-box;
+  }
+  ```
 
 ## 变更记录
 TODO
