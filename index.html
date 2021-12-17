@@ -27,20 +27,37 @@
     #app {
       padding: 20px;
     }
+
+    .box {
+      margin: 20px;
+    }
   </style>
 </head>
 
 <body>
   <div id="app">
-    <r-button icon="loading" icon-position="right" :loading="loading" @click="loading = !loading">设置</r-button>
-    <r-button icon="settings">按钮</r-button>
-    <r-button :loading="loading" @click="loading = !loading">click me</r-button>
+    <div class="box">
+      <r-input value="张三"></r-input>
+      <r-input value="zink" disabled></r-input>
+      <r-input value="zink" readonly></r-input>
+    </div>
 
-    <r-button-group>
-      <r-button icon="left">上一页</r-button>
-      <r-button>更多</r-button>
-      <r-button icon="right" icon-position="right">下一页</r-button>
-    </r-button-group>
+    <div class="box">
+      <r-input error-message="请填写内容"></r-input>
+
+    </div>
+
+    <div class="box">
+      <r-button icon="loading" icon-position="right" :loading="loading" @click="loading = !loading">设置</r-button>
+      <r-button icon="settings">按钮</r-button>
+      <r-button :loading="loading" @click="loading = !loading">click me</r-button>
+
+      <r-button-group>
+        <r-button icon="left">上一页</r-button>
+        <r-button>更多</r-button>
+        <r-button icon="right" icon-position="right">下一页</r-button>
+      </r-button-group>
+    </div>
 
     <div id="test"></div>
   </div>
