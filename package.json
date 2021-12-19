@@ -4,6 +4,7 @@
   "description": "康复训练项目",
   "main": "dist/index.js",
   "scripts": {
+    "build-test": "parcel watch test/* --no-cache",
     "dev-test": "parcel watch test/* --no-cache & karma start",
     "test": "parcel build test/* --no-cache --no-minify && karma start --single-run",
     "dev-build": "parcel build index.js --no-cache --no-minify",
