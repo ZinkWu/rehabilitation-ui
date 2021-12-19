@@ -51,6 +51,11 @@
     </div>
 
     <div class="box">
+      <r-input v-model="message"></r-input>
+      {{message}}
+    </div>
+
+    <div class="box">
       <r-button icon="loading" icon-position="right" :loading="loading" @click="loading = !loading">设置</r-button>
       <r-button icon="settings">按钮</r-button>
       <r-button :loading="loading" @click="loading = !loading">click me</r-button>

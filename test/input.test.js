@@ -74,16 +74,12 @@ describe('Input', () => {
         vm.$on(eventName, callback)
         let inputEl = vm.$el.querySelector('input')
         let evnet = new Event(eventName)
+        Object.defineProperty(evnet, 'target', {
+          value: { value: 'test' }, enumerable: true
+        })
         inputEl.dispatchEvent(evnet)
-        expect(callback).to.have.been.calledWith(evnet)
+        expect(callback).to.have.been.calledWith('test')
       })
-      vm = new Constructor().$mount()
-      const callback = sinon.fake();
-      vm.$on('change', callback)
-      let inputEl = vm.$el.querySelector('input')
-      let evnet = new Event('change')
-      inputEl.dispatchEvent(evnet)
-      expect(callback).to.have.been.calledWith(evnet)
     })
   })
 })
