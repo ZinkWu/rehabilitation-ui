@@ -36,14 +36,16 @@
 
 <body>
   <div id="app">
-    <r-row>
-      <r-col span="2">2</r-col>
-      <r-col span="22">22</r-col>
-    </r-row>
-    <r-row>
-      <r-col >12</r-col>
-      <r-col >12</r-col>
-    </r-row>
+    <div style="border: 1px solid blue;">
+      <r-row gutter="20">
+        <r-col span="2">2</r-col>
+        <r-col span="20" offset="2">22</r-col>
+      </r-row>
+      <r-row>
+        <r-col>12</r-col>
+        <r-col>12</r-col>
+      </r-row>
+    </div>
 
     <div class="box">
       <r-input value="张三"></r-input>
