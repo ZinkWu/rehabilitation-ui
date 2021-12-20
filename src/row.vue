@@ -1,5 +1,5 @@
 <template>
-  <div class="row" :style="rowStyle">
+  <div class="row" :style="rowStyle" :class="rowClass">
     <slot></slot>
   </div>
 </template>
@@ -11,6 +11,12 @@ export default {
       type: [String, Number],
       required: false,
     },
+    align: {
+      type: String,
+      validator: function (value) {
+        return ['left', 'center', 'right'].includes(value)
+      }
+    }
   },
   computed: {
     rowStyle() {
@@ -20,6 +26,10 @@ export default {
         marginRight: -gutter / 2 + "px",
       };
     },
+    rowClass() {
+      let {align} = this
+      return [`align-${align}`]
+    }
   },
   mounted() {
     this.$children.forEach((vm) => {
@@ -32,5 +42,14 @@ export default {
 <style lang="scss" scoped>
 .row {
   display: flex;
+  &.align-left{
+    justify-content: flex-start;
+  }
+  &.align-center{
+    justify-content: center;
+  }
+  &.align-right{
+    justify-content: flex-end;
+  }
 }
 </style>
