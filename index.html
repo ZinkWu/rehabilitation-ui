@@ -24,109 +24,26 @@
       --border-color-hover: #666;
     }
 
-    #app {
-      padding: 20px;
-    }
-
-    .box {
-      margin: 20px;
-    }
-
     .demo {
       border: 1px solid gray;
-      background: #eee;
-      height: 100px;
+      min-height: 100px;
     }
   </style>
 </head>
 
 <body>
   <div id="app">
-    <div>
-      <r-row>
-        <r-col span="9" style="border: 1px solid red;">
-          <r-row>
-            <r-col>1</r-col>
-            <r-col>2</r-col>
-            <r-col>3</r-col>
-            <r-col>4</r-col>
-          </r-row>
-        </r-col>
-        <r-col span="15" style="border: 1px solid blue;">
-          <r-row align="right">
-            <r-col>1</r-col>
-            <r-col>2</r-col>
-            <r-col>3</r-col>
-            <r-col>4</r-col>
-            <r-col>5</r-col>
-            <r-col>6</r-col>
-            <r-col>7</r-col>
-          </r-row>
-        </r-col>
-      </r-row>
-    </div>
-
-    <div>
-      <r-row>
-        <r-col span="24" :narrow-pc="{span: 8}" :pc="{span: 4}" :wide-pc="{span: 2}">2</r-col>
-        <r-col span="24" :narrow-pc="{span: 16}" :pc="{span: 20}" :wide-pc="{span: 22}">20</r-col>
-      </r-row>
-    </div>
-
-    <div>
-      <r-row>
-        <r-col span="24" :pad="{span: 12}" :narrow-pc="{span: 8}">
-          <div class="demo"></div>
-        </r-col>
-        <r-col span="24" :pad="{span: 10, offset: 2}" :narrow-pc="{span: 8}">
-          <div class="demo"></div>
-        </r-col>
-        <r-col span="24" :pad="{span: 12}" :narrow-pc="{span: 8}">
-          <div class="demo"></div>
-        </r-col>
-        <r-col span="24" :pad="{span: 12}" :narrow-pc="{span: 8}">
-          <div class="demo"></div>
-        </r-col>
-        <r-col span="24" :pad="{span: 12}" :narrow-pc="{span: 8}">
-          <div class="demo"></div>
-        </r-col>
-      </r-row>
-    </div>
+    <r-layout style="height: 100vh">
+      <r-sider>sider</r-sider>
+      <r-layout>
+        <r-header class="demo">header</r-header>
+        <r-content class="demo">content</r-content>
+        <r-footer class="demo">footer</r-footer>
+      </r-layout>
+    </r-layout>
 
 
 
-    <div class="box">
-      <r-input value="张三"></r-input>
-      <r-input value="zink" disabled></r-input>
-      <r-input value="zink" readonly></r-input>
-    </div>
-
-    <div class="box">
-      <r-input error-message="请填写内容"></r-input>
-    </div>
-
-    <div class="box">
-      <r-input value="zink" @change="inputChange"></r-input>
-    </div>
-
-    <div class="box">
-      <r-input v-model="message"></r-input>
-      {{message}}
-    </div>
-
-    <div class="box">
-      <r-button icon="loading" icon-position="right" :loading="loading" @click="loading = !loading">设置</r-button>
-      <r-button icon="settings">按钮</r-button>
-      <r-button :loading="loading" @click="loading = !loading">click me</r-button>
-
-      <r-button-group>
-        <r-button icon="left">上一页</r-button>
-        <r-button>更多</r-button>
-        <r-button icon="right" icon-position="right">下一页</r-button>
-      </r-button-group>
-    </div>
-
-    <div id="test"></div>
   </div>
 
 
