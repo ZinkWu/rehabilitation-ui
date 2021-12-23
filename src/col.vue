@@ -52,44 +52,22 @@ export default {
   },
   computed: {
     colClasses() {
-      let { span, offset, pad, narrowPc, pc, widePc } = this;
-      let padClass = [];
-      if (pad) {
-        padClass = [
-          pad.span && `pad-col-${pad.span}`,
-          pad.offset && `pad-offset-${pad.offset}`,
-        ];
-      }
-      let narrowPcClass = [];
-      if (narrowPc) {
-        narrowPcClass = [
-          narrowPc.span && `narrow-pc-col-${narrowPc.span}`,
-          narrowPc.offset && `narrow-pc-offset-${narrowPc.offset}`,
-        ];
-      }
-      let pcClass = [];
-      if (pc) {
-        pcClass = [
-          pc.span && `pc-col-${pc.span}`,
-          pc.offset && `pc-offset-${pc.offset}`,
-        ];
-      }
-      let widePcClass = [];
-      if (widePc) {
-        widePcClass = [
-          widePc.span && `wide-pc-col-${widePc.span}`,
-          widePc.offset && `wide-pc-offset-${widePc.offset}`,
-        ];
-      }
-      return [
-        span && `col-${span}`,
-        offset && `offset-${offset}`,
-        ...padClass,
-        ...narrowPcClass,
-        ...pcClass,
-        ...widePcClass
-        
-      ];
+      let { span, offset } = this;
+      let target = ["pad", "narrowPc", "pc", "widePc"];
+      let result = [];
+      target.forEach((item) => {
+        if (this[item]) {
+          result.push(
+            this[item].span ? `${item}-col-${this[item].span}` : `${item}-col-0`
+          );
+          result.push(
+            this[item].offset
+              ? `${item}-offset-${this[item].offset}`
+              : `${item}-offset-0`
+          );
+        }
+      });
+      return [span && `col-${span}`, offset && `offset-${offset}`, ...result];
     },
     colStyle() {
       let { gutter } = this;
@@ -105,14 +83,14 @@ export default {
 <style lang="scss" scoped>
 .col {
   $class-prefix: col-;
-  @for $n from 1 through 24 {
+  @for $n from 0 through 24 {
     &.#{$class-prefix}#{$n} {
       width: calc($n/24) * 100%;
     }
   }
 
   $class-prefix: offset-;
-  @for $n from 1 through 24 {
+  @for $n from 0 through 24 {
     &.#{$class-prefix}#{$n} {
       margin-left: calc($n/24) * 100%;
     }
@@ -120,14 +98,14 @@ export default {
 
   @media (min-width: 577px) {
     $class-prefix: pad-col-;
-    @for $n from 1 through 24 {
+    @for $n from 0 through 24 {
       &.#{$class-prefix}#{$n} {
         width: calc($n/24) * 100%;
       }
     }
 
     $class-prefix: pad-offset-;
-    @for $n from 1 through 24 {
+    @for $n from 0 through 24 {
       &.#{$class-prefix}#{$n} {
         margin-left: calc($n/24) * 100%;
       }
@@ -135,15 +113,15 @@ export default {
   }
 
   @media (min-width: 769px) {
-    $class-prefix: narrow-pc-col-;
-    @for $n from 1 through 24 {
+    $class-prefix: narrowPc-col-;
+    @for $n from 0 through 24 {
       &.#{$class-prefix}#{$n} {
         width: calc($n/24) * 100%;
       }
     }
 
-    $class-prefix: narrow-pc-offset-;
-    @for $n from 1 through 24 {
+    $class-prefix: narrowPc-offset-;
+    @for $n from 0 through 24 {
       &.#{$class-prefix}#{$n} {
         margin-left: calc($n/24) * 100%;
       }
@@ -152,14 +130,14 @@ export default {
 
   @media (min-width: 923px) {
     $class-prefix: pc-col-;
-    @for $n from 1 through 24 {
+    @for $n from 0 through 24 {
       &.#{$class-prefix}#{$n} {
         width: calc($n/24) * 100%;
       }
     }
 
     $class-prefix: pc-offset-;
-    @for $n from 1 through 24 {
+    @for $n from 0 through 24 {
       &.#{$class-prefix}#{$n} {
         margin-left: calc($n/24) * 100%;
       }
@@ -167,15 +145,15 @@ export default {
   }
 
   @media (min-width: 1201px) {
-    $class-prefix: wide-pc-col-;
-    @for $n from 1 through 24 {
+    $class-prefix: widePc-col-;
+    @for $n from 0 through 24 {
       &.#{$class-prefix}#{$n} {
         width: calc($n/24) * 100%;
       }
     }
 
-    $class-prefix: wide-pc-offset-;
-    @for $n from 1 through 24 {
+    $class-prefix: widePc-offset-;
+    @for $n from 0 through 24 {
       &.#{$class-prefix}#{$n} {
         margin-left: calc($n/24) * 100%;
       }
