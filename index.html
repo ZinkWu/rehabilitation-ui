@@ -31,6 +31,12 @@
     .box {
       margin: 20px;
     }
+
+    .demo {
+      border: 1px solid gray;
+      background: #eee;
+      height: 100px;
+    }
   </style>
 </head>
 
@@ -62,12 +68,32 @@
 
     <div>
       <r-row>
-        <r-col span="2" :phone="{span: 24}" :pad="{span: 10}" :narrow-pc="{span: 8}" :pc="{span: 4}"
-          :wide-pc="{span: 2}">2</r-col>
-        <r-col span="20" :phone="{span: 24}" :pad="{span: 14}" :narrow-pc="{span: 16}" :pc="{span: 20}"
-          :wide-pc="{span: 22}">20</r-col>
+        <r-col span="24" :narrow-pc="{span: 8}" :pc="{span: 4}" :wide-pc="{span: 2}">2</r-col>
+        <r-col span="24" :narrow-pc="{span: 16}" :pc="{span: 20}" :wide-pc="{span: 22}">20</r-col>
       </r-row>
     </div>
+    
+    <div>
+      <r-row>
+        <r-col span="24" :pad="{span: 12}" :narrow-pc="{span: 8}">
+          <div class="demo"></div>
+        </r-col>
+        <r-col span="24" :pad="{span: 12}" :narrow-pc="{span: 8}">
+          <div class="demo"></div>
+        </r-col>
+        <r-col span="24" :pad="{span: 12}" :narrow-pc="{span: 8}">
+          <div class="demo"></div>
+        </r-col>
+        <r-col span="24" :pad="{span: 12}" :narrow-pc="{span: 8}">
+          <div class="demo"></div>
+        </r-col>
+        <r-col span="24" :pad="{span: 12}" :narrow-pc="{span: 8}">
+          <div class="demo"></div>
+        </r-col>
+      </r-row>
+    </div>
+
+
 
     <div class="box">
       <r-input value="张三"></r-input>
