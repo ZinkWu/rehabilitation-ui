@@ -10,6 +10,7 @@ import Header from './header'
 import Sider from './sider'
 import Content from './content'
 import Footer from './footer'
+import plugin from './plugin'
 
 Vue.component('r-button', Button)
 Vue.component('r-icon', Icon)
@@ -22,6 +23,7 @@ Vue.component('r-header', Header)
 Vue.component('r-sider', Sider)
 Vue.component('r-content', Content)
 Vue.component('r-footer', Footer)
+Vue.use(plugin)
 
 new Vue({
   el: "#app",
@@ -31,9 +33,11 @@ new Vue({
       message: 'hi'
     }
   },
+  created(){
+  },
   methods:{
-    inputChange(e) {
-      console.log(e.target.value);
+    showToast(message){
+      this.$toast(message)
     }
   }
 })

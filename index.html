@@ -28,22 +28,24 @@
       border: 1px solid gray;
       min-height: 100px;
     }
+    .sider {
+      background: #333;
+      width: 200px;
+    }
+    .header{
+      background: #999;
+      height: 100px;
+    }
+    .footer{
+      background: #ccc;
+      height: 50px
+    }
   </style>
 </head>
 
 <body>
   <div id="app">
-    <r-layout style="height: 100vh">
-      <r-sider>sider</r-sider>
-      <r-layout>
-        <r-header class="demo">header</r-header>
-        <r-content class="demo">content</r-content>
-        <r-footer class="demo">footer</r-footer>
-      </r-layout>
-    </r-layout>
-
-
-
+    <r-button @click="showToast('我是message')">click me</r-button>
   </div>
 
 
