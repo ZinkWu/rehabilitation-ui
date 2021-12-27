@@ -39,8 +39,9 @@ new Vue({
           // message: `很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多， 完`,
           message: 'this is message',
           // enableHTML: true,
-          autoCloseDelay: 3,
+          autoCloseDelay: 300,
           closeButton: true,
+          position: "middle"
           // closeButtonOptions: {
           //   content: 'ok',
           //   callback(vm){
