@@ -2,7 +2,7 @@
   <div class="toast" ref="container">
     <div class="message" v-html="message" v-if="enableHTML"></div>
     <div class="message" v-else>
-      {{ message }}
+      {{ message }} {{Math.floor(Math.random()*100)}}
     </div>
     <template v-if="closeButton">
       <div class="line" ref="line"></div>

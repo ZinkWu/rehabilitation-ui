@@ -35,18 +35,20 @@ new Vue({
   methods: {
     showToast() {
       this.$toast({
-        // message: `很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多， 完`,
-        message: 'this is message',
-        // enableHTML: true,
-        autoCloseDelay: 1,
-        closeButton: true,
-        // closeButtonOptions: {
-        //   content: 'ok',
-        //   callback(vm){
-        //     console.log("ok!!!!!!!!!!!");
-        //     vm.log()
-        //   }
-        // }
+        propsData: {
+          // message: `很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多， 完`,
+          message: 'this is message',
+          // enableHTML: true,
+          autoCloseDelay: 3,
+          closeButton: true,
+          // closeButtonOptions: {
+          //   content: 'ok',
+          //   callback(vm){
+          //     console.log("ok!!!!!!!!!!!");
+          //     vm.log()
+          //   }
+          // }
+        }
       })
     }
   }
