@@ -8,16 +8,25 @@ export default {
       if (currentToast) {
         currentToast.close()
       }
-      currentToast = createToast({ Vue, propsData })
+      currentToast = createToast(
+        {
+          Vue,
+          propsData,
+          onClose: () => { 
+            currentToast = null
+          }
+        }
+      )
     }
   }
 }
 
 
-function createToast({ Vue, propsData }) {
+function createToast({ Vue, propsData, onClose }) {
   const Constructor = Vue.extend(Toast)
   const vm = new Constructor({ propsData })
   vm.$mount()
   document.body.appendChild(vm.$el)
+  vm.$on('beforeClose', onClose)
   return vm;
 }
