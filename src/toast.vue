@@ -66,7 +66,9 @@ export default {
     },
   },
   mounted() {
-    this.resetLineHeight();
+    if (this.closeButton) {
+      this.resetLineHeight();
+    }
     this.checkAutoClose();
   },
   methods: {
@@ -106,7 +108,7 @@ export default {
 $font-size: 14px;
 $toast-height: 40px;
 $toast-bg: rgba(0, 0, 0, 0.75);
-$animation-duration: .3s;
+$animation-duration: 0.3s;
 @keyframes slide-down {
   0% {
     opacity: 0;

@@ -41,7 +41,7 @@ new Vue({
           // enableHTML: true,
           autoCloseDelay: 300,
           closeButton: true,
-          position: "middle"
+          position: "bottom"
           // closeButtonOptions: {
           //   content: 'ok',
           //   callback(vm){
