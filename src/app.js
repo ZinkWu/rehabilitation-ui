@@ -28,16 +28,26 @@ Vue.use(plugin)
 new Vue({
   el: "#app",
   data() {
-    return {
-      loading: false,
-      message: 'hi'
-    }
+    return {}
   },
-  created(){
+  created() {
   },
-  methods:{
-    showToast(message){
-      this.$toast(message)
+  methods: {
+    showToast() {
+      this.$toast({
+        // message: `很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多， 完`,
+        message: 'this is message',
+        // enableHTML: true,
+        autoClose: false,
+        closeButton: true,
+        // closeButtonOptions: {
+        //   content: 'ok',
+        //   callback(vm){
+        //     console.log("ok!!!!!!!!!!!");
+        //     vm.log()
+        //   }
+        // }
+      })
     }
   }
 })
