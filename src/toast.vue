@@ -1,8 +1,8 @@
 <template>
-  <div class="toast" ref="container">
+  <div class="toast" ref="container" :class="toastClasses">
     <div class="message" v-html="message" v-if="enableHTML"></div>
     <div class="message" v-else>
-      {{ message }} {{Math.floor(Math.random()*100)}}
+      {{ message }} {{ Math.floor(Math.random() * 100) }}
     </div>
     <template v-if="closeButton">
       <div class="line" ref="line"></div>
@@ -45,10 +45,22 @@ export default {
         };
       },
     },
+    position: {
+      type: String,
+      default: "bottom",
+      validator(val) {
+        return ["top", "bottom", "middle"].indexOf(val) >= 0;
+      },
+    },
     enableHTML: {
       type: Boolean,
       default: false,
       required: false,
+    },
+  },
+  computed: {
+    toastClasses() {
+      return [`position-${this.position}`];
     },
   },
   mounted() {
@@ -92,11 +104,20 @@ export default {
 $font-size: 14px;
 $toast-height: 40px;
 $toast-bg: rgba(0, 0, 0, 0.75);
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(-50%, 0);
+  }
+}
 .toast {
+  animation: fade-in 1s;
   position: fixed;
-  top: 0;
   left: 50%;
-  transform: translateX(-50%);
   font-size: $font-size;
   line-height: 1.8;
   min-height: $toast-height;
@@ -107,7 +128,19 @@ $toast-bg: rgba(0, 0, 0, 0.75);
   background: $toast-bg;
   box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.5);
   color: white;
-  & > .message{
+  &.position-top {
+    top: 0;
+    transform: translateX(-50%);
+  }
+  &.position-bottom {
+    bottom: 0;
+    transform: translateX(-50%);
+  }
+  &.position-middle {
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  & > .message {
     padding: 9px 0;
   }
   & > .line {
