@@ -11,6 +11,11 @@ import Sider from './sider'
 import Content from './content'
 import Footer from './footer'
 import plugin from './plugin'
+import Tabs from './tabs'
+import TabsNav from './tabs-nav'
+import TabsItem from './tabs-item'
+import TabsBody from './tabs-body'
+import TabsPanels from './tabs-panels'
 
 Vue.component('r-button', Button)
 Vue.component('r-icon', Icon)
@@ -24,11 +29,18 @@ Vue.component('r-sider', Sider)
 Vue.component('r-content', Content)
 Vue.component('r-footer', Footer)
 Vue.use(plugin)
+Vue.component('r-tabs', Tabs)
+Vue.component('r-tabs-nav', TabsNav)
+Vue.component('r-tabs-item', TabsItem)
+Vue.component('r-tabs-body', TabsBody)
+Vue.component('r-tabs-panels', TabsPanels)
 
 new Vue({
   el: "#app",
   data() {
-    return {}
+    return {
+      selectedTabs: 'tab1'
+    }
   },
   created() {
   },
