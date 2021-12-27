@@ -65,7 +65,6 @@ describe('Toast', () => {
     })
 
     it('enableHTML', () => {
-      const callback = sinon.fake()
       const div = document.createElement('div')
       document.body.appendChild(div)
       const Constructor = Vue.extend(Toast)
@@ -80,7 +79,6 @@ describe('Toast', () => {
     })
 
     it('position', () => {
-      const callback = sinon.fake()
       const div = document.createElement('div')
       document.body.appendChild(div)
       const Constructor = Vue.extend(Toast)

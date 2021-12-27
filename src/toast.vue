@@ -3,7 +3,7 @@
     <div class="toast" ref="toast">
       <div class="message" v-html="message" v-if="enableHTML"></div>
       <div class="message" v-else>
-        {{ message }} {{ Math.floor(Math.random() * 100) }}
+        {{ message }}
       </div>
       <template v-if="closeButton">
         <div class="line" ref="line"></div>
@@ -95,10 +95,15 @@ export default {
     },
     resetLineHeight() {
       // in plugin.js, vm.$mount() before document.body.appendChild(), async render
+      // this.$nextTick in test env error
       this.$nextTick(() => {
         this.$refs.line.style.height =
           this.$refs.toast.getBoundingClientRect().height + "px";
       });
+      // setTimeout(() => {
+      //   this.$refs.line.style.height =
+      //     this.$refs.toast.getBoundingClientRect().height + "px";
+      // }, 0);
     },
   },
 };
