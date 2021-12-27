@@ -11,7 +11,7 @@ describe('Toast', () => {
     expect(Toast).to.exist
   })
 
-  describe('props', function (){
+  describe('props', function () {
     it('autoClose', (done) => {
       const div = document.createElement('div')
       document.body.appendChild(div)
@@ -43,7 +43,7 @@ describe('Toast', () => {
       }, 1500)
     })
 
-    it('closeButton', () => {
+    it('closeButton', (done) => {
       const callback = sinon.fake()
       const div = document.createElement('div')
       document.body.appendChild(div)
@@ -53,15 +53,20 @@ describe('Toast', () => {
           autoClose: false,
           closeButton: true,
           closeButtonOptions: {
-            content: "close",
+            content: "test",
             callback
           }
         }
       }).$mount(div)
       const closeEl = vm.$el.querySelector('.close')
-      expect(closeEl.textContent.trim()).to.eq("close")
-      closeEl.click()
-      expect(callback).to.have.been.called
+      expect(closeEl.textContent.trim()).to.eq("test")
+      setTimeout(() => {
+        // 这里如果同步执行代码，mounted hook中的代码还未执行完毕就已经执行到 click 关闭 toast
+        // element 已经删除，造成 resetLineHeight 中的代码报错
+        closeEl.click()
+        expect(callback).to.have.been.called
+        done()
+      }, 200)
     })
 
     it('enableHTML', () => {
