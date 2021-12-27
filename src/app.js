@@ -38,7 +38,7 @@ new Vue({
         // message: `很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多， 完`,
         message: 'this is message',
         // enableHTML: true,
-        autoClose: false,
+        autoCloseDelay: 1,
         closeButton: true,
         // closeButtonOptions: {
         //   content: 'ok',

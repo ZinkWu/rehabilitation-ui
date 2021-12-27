@@ -25,7 +25,7 @@ export default {
       default: true,
       required: false,
     },
-    autoColseDelay: {
+    autoCloseDelay: {
       type: Number,
       default: 3,
       required: false,
@@ -60,7 +60,7 @@ export default {
       if (this.autoClose) {
         setTimeout(() => {
           this.close();
-        }, this.autoColseDelay * 1000);
+        }, this.autoCloseDelay * 1000);
       }
     },
     close() {
