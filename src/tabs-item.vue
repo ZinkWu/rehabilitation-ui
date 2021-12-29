@@ -70,7 +70,7 @@ $disabled-color: gray;
   }
   &.disabled {
     color: $disabled-color;
-    cursor: default;
+    cursor: not-allowed;
   }
 }
 </style>
