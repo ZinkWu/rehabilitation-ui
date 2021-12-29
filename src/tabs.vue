@@ -8,8 +8,8 @@
 import Vue from "vue";
 export default {
   model: {
-    prop: 'selected',
-    event: 'selected'
+    prop: "selected",
+    event: "selected",
   },
   provide() {
     return {
@@ -19,13 +19,12 @@ export default {
   data() {
     return {
       eventBus: new Vue(),
-      selectedFake: undefined
     };
   },
-  watch:{
-    selected(val){
+  watch: {
+    selected(val) {
       console.log(`tabs watch: ${val}`);
-    }
+    },
   },
   props: {
     selected: {
@@ -38,12 +37,15 @@ export default {
       validator(val) {
         return ["Horizontal", "Vertical"].indexOf(val) >= 0;
       },
-    }
+    },
   },
   created() {
-    this.eventBus.$on('tabsItemClick', (name)=>{
-      this.$emit('selected', name)
-    })
+    this.eventBus.$on("tabsItemClick", (name) => {
+      this.$emit("selected", name);
+    });
+  },
+  mounted() {
+    this.eventBus.$emit("tabsItemClick", this.selected);
   },
 };
 </script>

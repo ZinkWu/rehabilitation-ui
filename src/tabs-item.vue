@@ -6,52 +6,56 @@
 
 <script>
 export default {
-  inject: ['eventBus'],
-  data(){
+  inject: ["eventBus"],
+  data() {
     return {
-      active: false
-    }
+      active: false,
+    };
   },
   props: {
     name: {
       type: [String, Number],
-      required: true
-    }
+      required: true,
+    },
   },
-  computed:{
-    itemClasses(){
+  computed: {
+    itemClasses() {
       return {
-        active: this.active
-      }
-    }
+        active: this.active,
+      };
+    },
   },
-  created(){
-    this.eventBus.$on('tabsItemClick', (name) => {
-      console.log(name);
-    })
+  created() {
+    this.eventBus.$on("tabsItemClick", (name) => {
+      this.active = name === this.name;
+    });
   },
   methods: {
-    xxx(){
-      this.eventBus.$emit('tabsItemClick', this.name)
-    }
-  }
+    xxx() {
+      this.eventBus.$emit("tabsItemClick", this.name);
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
+$active-color: rgb(107, 146, 219);
 .tabs-item {
   background: #ddd;
   height: 100%;
   display: flex;
   align-items: center;
-  padding: 1em;
+  padding: 0 1em;
   margin-left: 1px;
   cursor: pointer;
   &:first-child {
     margin-left: 0;
   }
-  &.active{
-    color: red;
+  &.active {
+    color: $active-color;
+    & > .r-icon {
+      fill: $active-color;
+    }
   }
 }
 </style>

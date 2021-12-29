@@ -39,7 +39,7 @@ let app = new Vue({
   el: "#app",
   data() {
     return {
-      selectedTab: 'tab1'
+      selectedTab: 'tab3'
     }
   },
   watch:{
