@@ -1,14 +1,27 @@
 <template>
   <div class="tabs-nav">
     <slot></slot>
-    <slot name="actions"></slot>
+    <div class="actions-container">
+      <slot name="actions"></slot>
+    </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  inject: ['eventBus']
+};
 </script>
 
 <style lang="scss" scoped>
-.tabs-nav{}
+$height: 40px;
+.tabs-nav {
+  display: flex;
+  align-items: center;
+  border: 1px solid red;
+  height: $height;
+  & > .actions-container{
+    margin-left: auto;
+  }
+}
 </style>

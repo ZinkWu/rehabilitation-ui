@@ -6,7 +6,12 @@
 
 <script>
 export default {
-  
+  inject: ['eventBus'],
+  created(){
+    this.eventBus.$on('tabsItemClick', (name)=>{
+      console.log(`panel: ${name}`);
+    })
+  }
 }
 </script>
 

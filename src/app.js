@@ -35,11 +35,16 @@ Vue.component('r-tabs-item', TabsItem)
 Vue.component('r-tabs-body', TabsBody)
 Vue.component('r-tabs-panels', TabsPanels)
 
-new Vue({
+let app = new Vue({
   el: "#app",
   data() {
     return {
-      selectedTabs: 'tab1'
+      selectedTab: 'tab1'
+    }
+  },
+  watch:{
+    selectedTab(val){
+      console.log("app watch", val);
     }
   },
   created() {

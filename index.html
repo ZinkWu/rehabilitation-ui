@@ -17,7 +17,7 @@
 
 <body>
   <div id="app">
-    <r-tabs :selected.sync="selectedTabs" direction="Horizontal">
+    <r-tabs v-model="selectedTab" direction="Horizontal">
       <r-tabs-nav>
         <template slot="actions">
           <r-button>actions</r-button>
@@ -28,11 +28,11 @@
         <r-tabs-item name="tab2" disabled>2</r-tabs-item>
         <r-tabs-item name="tab3">3</r-tabs-item>
       </r-tabs-nav>
-      <r-tans-body>
+      <r-tabs-body>
         <r-tabs-panels name="tab1">content 1</r-tabs-panels>
         <r-tabs-panels name="tab2">content 2</r-tabs-panels>
         <r-tabs-panels name="tab3">content 3</r-tabs-panels>
-      </r-tans-body>
+      </r-tabs-body>
     </r-tabs>
   </div>
   <script src="./src/app.js"></script>

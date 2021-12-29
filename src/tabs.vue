@@ -5,7 +5,28 @@
 </template>
 
 <script>
+import Vue from "vue";
 export default {
+  model: {
+    prop: 'selected',
+    event: 'selected'
+  },
+  provide() {
+    return {
+      eventBus: this.eventBus,
+    };
+  },
+  data() {
+    return {
+      eventBus: new Vue(),
+      selectedFake: undefined
+    };
+  },
+  watch:{
+    selected(val){
+      console.log(`tabs watch: ${val}`);
+    }
+  },
   props: {
     selected: {
       type: String,
@@ -17,14 +38,12 @@ export default {
       validator(val) {
         return ["Horizontal", "Vertical"].indexOf(val) >= 0;
       },
-    },
-    disabled: {
-      type: Boolean,
-      default: false
     }
   },
   created() {
-    // this.$emit('update:selected', 'xxx')
+    this.eventBus.$on('tabsItemClick', (name)=>{
+      this.$emit('selected', name)
+    })
   },
 };
 </script>
