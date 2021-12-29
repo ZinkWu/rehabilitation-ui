@@ -23,7 +23,7 @@ export default {
   },
   props: {
     selected: {
-      type: String,
+      type: [String, Number],
       required: true,
     },
     direction: {

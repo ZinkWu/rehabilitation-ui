@@ -10,21 +10,21 @@
 
 <script>
 export default {
-  inject: ['eventBus'],
-  data(){
+  inject: ["eventBus"],
+  data() {
     return {
-      showLine: false
-    }
+      showLine: false,
+    };
   },
-  mounted(){
-    this.eventBus.$on('resetLine', (vm) => {
-      let {left, width} = vm.$el.getBoundingClientRect()
-      let lineEl = this.$refs.line
-      lineEl.style.width = `${width}px`
-      lineEl.style.transform = `translateX(${left}px)`
-      this.showLine = true
-    })
-  }
+  mounted() {
+    this.eventBus.$on("resetLine", (vm) => {
+      let { left, width } = vm.$el.getBoundingClientRect();
+      let lineEl = this.$refs.line;
+      lineEl.style.width = `${width}px`;
+      lineEl.style.transform = `translateX(${left}px)`;
+      this.showLine = true;
+    });
+  },
 };
 </script>
 
@@ -37,11 +37,11 @@ $active-color: #409eff;
   height: $height;
   position: relative;
   border-bottom: 1px solid #ddd;
-  & > .actions-container{
+  & > .actions-container {
     margin-left: auto;
     padding: 0 1em;
   }
-  &>.line{
+  & > .line {
     // transform: translateX();
     transition: all 100ms linear;
     position: absolute;

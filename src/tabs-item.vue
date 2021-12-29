@@ -34,11 +34,11 @@ export default {
   created() {
     this.eventBus.$on("tabsItemClick", (name) => {
       this.active = name === this.name;
-      if(name === this.name){
-        this.active = true
-        this.eventBus.$emit('resetLine', this)
-      }else{
-        this.active = false
+      if (name === this.name) {
+        this.active = true;
+        this.eventBus.$emit("resetLine", this);
+      } else {
+        this.active = false;
       }
     });
   },
@@ -70,7 +70,7 @@ $disabled-color: gray;
   }
   &.disabled {
     color: $disabled-color;
-    cursor: not-allowed;
+    cursor: noet;
   }
 }
 </style>
