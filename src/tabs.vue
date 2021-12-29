@@ -21,11 +21,6 @@ export default {
       eventBus: new Vue(),
     };
   },
-  watch: {
-    selected(val) {
-      console.log(`tabs watch: ${val}`);
-    },
-  },
   props: {
     selected: {
       type: String,

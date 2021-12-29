@@ -1,5 +1,5 @@
 <template>
-  <div class="tabs-item" @click="xxx" :class="itemClasses">
+  <div class="tabs-item" @click="switchHandle" :class="itemClasses">
     <slot></slot>
   </div>
 </template>
@@ -17,45 +17,59 @@ export default {
       type: [String, Number],
       required: true,
     },
+    disabled: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
   },
   computed: {
     itemClasses() {
       return {
         active: this.active,
+        disabled: this.disabled,
       };
     },
   },
   created() {
     this.eventBus.$on("tabsItemClick", (name) => {
       this.active = name === this.name;
+      if(name === this.name){
+        this.active = true
+        this.eventBus.$emit('resetLine', this)
+      }else{
+        this.active = false
+      }
     });
   },
   methods: {
-    xxx() {
-      this.eventBus.$emit("tabsItemClick", this.name);
+    switchHandle() {
+      if (this.disabled) {
+        return;
+      }
+      this.eventBus.$emit("tabsItemClick", this.name, this);
     },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-$active-color: rgb(107, 146, 219);
+$active-color: #409eff;
 .tabs-item {
-  background: #ddd;
   height: 100%;
   display: flex;
   align-items: center;
   padding: 0 1em;
-  margin-left: 1px;
   cursor: pointer;
-  &:first-child {
-    margin-left: 0;
-  }
   &.active {
     color: $active-color;
     & > .r-icon {
       fill: $active-color;
     }
+  }
+  &.disabled {
+    color: gray;
+    cursor: default;
   }
 }
 </style>

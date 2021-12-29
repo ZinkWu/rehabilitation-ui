@@ -42,11 +42,6 @@ let app = new Vue({
       selectedTab: 'tab3'
     }
   },
-  watch:{
-    selectedTab(val){
-      console.log("app watch", val);
-    }
-  },
   created() {
   },
   methods: {
