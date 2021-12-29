@@ -19,9 +19,11 @@ export default {
     },
   },
   created() {
-    this.eventBus.$on("tabsItemClick", (name) => {
-      this.active = name === this.name;
-    });
+    if (this.eventBus) {
+      this.eventBus.$on("tabsItemClick", (name) => {
+        this.active = name === this.name;
+      });
+    }
   },
 };
 </script>

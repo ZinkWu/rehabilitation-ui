@@ -26,6 +26,7 @@ export default {
       type: [String, Number],
       required: true,
     },
+    // TODO
     direction: {
       type: String,
       default: "Horizontal",
@@ -40,6 +41,13 @@ export default {
     });
   },
   mounted() {
+    if (this.$children.length === 0) {
+      if (console && console.warn) {
+        console.warn(
+          "the child compoent of the tabs component  shoud be tab-nav and tab-body."
+        );
+      }
+    }
     this.eventBus.$emit("tabsItemClick", this.selected);
   },
 };

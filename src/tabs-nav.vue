@@ -17,13 +17,15 @@ export default {
     };
   },
   mounted() {
-    this.eventBus.$on("resetLine", (vm) => {
-      let { left, width } = vm.$el.getBoundingClientRect();
-      let lineEl = this.$refs.line;
-      lineEl.style.width = `${width}px`;
-      lineEl.style.transform = `translateX(${left}px)`;
-      this.showLine = true;
-    });
+    if (this.eventBus) {
+      this.eventBus.$on("resetLine", (vm) => {
+        let { left, width } = vm.$el.getBoundingClientRect();
+        let lineEl = this.$refs.line;
+        lineEl.style.width = `${width}px`;
+        lineEl.style.transform = `translateX(${left}px)`;
+        this.showLine = true;
+      });
+    }
   },
 };
 </script>

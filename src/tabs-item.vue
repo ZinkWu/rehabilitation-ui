@@ -32,22 +32,27 @@ export default {
     },
   },
   created() {
-    this.eventBus.$on("tabsItemClick", (name) => {
-      this.active = name === this.name;
-      if (name === this.name) {
-        this.active = true;
-        this.eventBus.$emit("resetLine", this);
-      } else {
-        this.active = false;
-      }
-    });
+    if (this.eventBus) {
+      this.eventBus.$on("tabsItemClick", (name) => {
+        this.active = name === this.name;
+        if (name === this.name) {
+          this.active = true;
+          this.eventBus.$emit("resetLine", this);
+        } else {
+          this.active = false;
+        }
+      });
+    }
   },
   methods: {
     switchHandle() {
       if (this.disabled) {
         return;
       }
-      this.eventBus.$emit("tabsItemClick", this.name, this);
+      if (this.eventBus) {
+        this.eventBus.$emit("tabsItemClick", this.name, this);
+      }
+      this.$emit('click', this)
     },
   },
 };
