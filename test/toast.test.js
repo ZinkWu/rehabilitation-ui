@@ -18,6 +18,7 @@ describe('Toast', () => {
       const Constructor = Vue.extend(Toast)
       const vm = new Constructor({
         propsData: {
+          message: "test",
           autoClose: true,
           autoCloseDelay: 0.5
         }
@@ -33,6 +34,7 @@ describe('Toast', () => {
       const Constructor = Vue.extend(Toast)
       const vm = new Constructor({
         propsData: {
+          message: "test",
           autoCloseDelay: 1
         }
       }).$mount(div)
@@ -50,6 +52,7 @@ describe('Toast', () => {
       const Constructor = Vue.extend(Toast)
       const vm = new Constructor({
         propsData: {
+          message: "test",
           autoClose: false,
           closeButton: true,
           closeButtonOptions: {
@@ -89,6 +92,7 @@ describe('Toast', () => {
       const Constructor = Vue.extend(Toast)
       const vm = new Constructor({
         propsData: {
+          message: "test",
           position: 'bottom'
         }
       }).$mount(div)
