@@ -31,14 +31,15 @@ export default {
 <style lang="scss" scoped>
 $height: 40px;
 $active-color: #409eff;
-
 .tabs-nav {
   display: flex;
   align-items: center;
   height: $height;
   position: relative;
+  border-bottom: 1px solid #ddd;
   & > .actions-container{
     margin-left: auto;
+    padding: 0 1em;
   }
   &>.line{
     // transform: translateX();

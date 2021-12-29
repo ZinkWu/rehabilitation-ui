@@ -28,5 +28,6 @@ export default {
 
 <style lang="scss" scoped>
 .tabs-panels {
+  padding: 1em;
 }
 </style>

@@ -55,6 +55,7 @@ export default {
 
 <style lang="scss" scoped>
 $active-color: #409eff;
+$disabled-color: gray;
 .tabs-item {
   height: 100%;
   display: flex;
@@ -68,7 +69,7 @@ $active-color: #409eff;
     }
   }
   &.disabled {
-    color: gray;
+    color: $disabled-color;
     cursor: default;
   }
 }
