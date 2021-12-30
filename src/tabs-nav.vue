@@ -1,7 +1,7 @@
 <template>
   <div class="tabs-nav">
     <slot></slot>
-    <div class="line" ref="line" v-show="showLine"></div>
+    <div class="line" ref="line" v-show="lineVisible"></div>
     <div class="actions-container">
       <slot name="actions"></slot>
     </div>
@@ -13,7 +13,7 @@ export default {
   inject: ["eventBus"],
   data() {
     return {
-      showLine: false,
+      lineVisible: false,
     };
   },
   mounted() {
@@ -23,7 +23,7 @@ export default {
         let lineEl = this.$refs.line;
         lineEl.style.width = `${width}px`;
         lineEl.style.transform = `translateX(${left}px)`;
-        this.showLine = true;
+        this.lineVisible = true;
       });
     }
   },
@@ -44,7 +44,6 @@ $active-color: #409eff;
     padding: 0 1em;
   }
   & > .line {
-    // transform: translateX();
     transition: all 100ms linear;
     position: absolute;
     bottom: 0;
