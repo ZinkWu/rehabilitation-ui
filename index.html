@@ -12,31 +12,18 @@
       padding: 0;
       box-sizing: border-box;
     }
+    body{
+      padding: 2em
+    }
   </style>
 </head>
 
 <body>
   <div id="app">
-    <!-- <r-tabs v-model="selectedTab" direction="Horizontal">
-      <r-tabs-nav>
-        <template slot="actions">
-          <r-button>actions</r-button>
-        </template>
-        <r-tabs-item name="tab1">
-          <r-icon name="settings"></r-icon> tab1
-        </r-tabs-item>
-        <r-tabs-item name="tab2" disabled>tab2</r-tabs-item>
-        <r-tabs-item name="tab3">tab3</r-tabs-item>
-      </r-tabs-nav>
-      <r-tabs-body>
-        <r-tabs-panels name="tab1">content 1</r-tabs-panels>
-        <r-tabs-panels name="tab2">content 2</r-tabs-panels>
-        <r-tabs-panels name="tab3">content 3</r-tabs-panels>
-      </r-tabs-body>
-    </r-tabs> -->
-    <r-tabs>
-      <div>test</div>
-    </r-tabs>
+    <r-popover :visible="visible">
+      <template slot="content">hello</template>
+      <r-button @click="visible = !visible">click</r-button>
+    </r-popover>
   </div>
   <script src="./src/app.js"></script>
 </body>

@@ -16,6 +16,7 @@ import TabsNav from './tabs-nav'
 import TabsItem from './tabs-item'
 import TabsBody from './tabs-body'
 import TabsPanels from './tabs-panels'
+import Popover from './popover'
 
 Vue.component('r-button', Button)
 Vue.component('r-icon', Icon)
@@ -34,12 +35,14 @@ Vue.component('r-tabs-nav', TabsNav)
 Vue.component('r-tabs-item', TabsItem)
 Vue.component('r-tabs-body', TabsBody)
 Vue.component('r-tabs-panels', TabsPanels)
+Vue.component('r-popover', Popover)
 
 let app = new Vue({
   el: "#app",
   data() {
     return {
-      selectedTab: 'tab3'
+      selectedTab: 'tab3',
+      visible: false,
     }
   },
   created() {
@@ -53,7 +56,7 @@ let app = new Vue({
           // enableHTML: true,
           autoCloseDelay: 300,
           closeButton: true,
-          position: "bottom"
+          position: "bottom",
           // closeButtonOptions: {
           //   content: 'ok',
           //   callback(vm){
