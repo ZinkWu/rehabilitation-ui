@@ -42,7 +42,6 @@ let app = new Vue({
   data() {
     return {
       selectedTab: 'tab3',
-      visible: false,
     }
   },
   created() {

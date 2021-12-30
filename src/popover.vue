@@ -1,6 +1,6 @@
 <template>
-  <div class="popover">
-    <div class="content-container" v-if="visible">
+  <div class="popover" @click.stop="trigger">
+    <div class="content-container" v-if="visible" ref="content" @click.stop>
       <slot name="content"></slot>
     </div>
     <slot></slot>
@@ -9,11 +9,26 @@
 
 <script>
 export default {
-  props: {
-    visible: {
-      type: Boolean,
-      required: true,
-      default: false,
+  data() {
+    return {
+      visible: false,
+    };
+  },
+  watch: {
+    visible(val) {
+      if (val) {
+        document.addEventListener("click", this.eventHandler);
+      } else {
+        document.removeEventListener("click", this.eventHandler);
+      }
+    },
+  },
+  methods: {
+    trigger() {
+      this.visible = !this.visible;
+    },
+    eventHandler() {
+      this.visible = false;
     },
   },
 };
