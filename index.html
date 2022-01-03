@@ -31,7 +31,7 @@
 <body>
   <div id="app">
     <r-popover>
-      <template slot="content">说点什么吧</template>
+      <template slot="content" >说点什么吧</template>
       <r-button>click</r-button>
     </r-popover>
     <r-popover position="bottom">
@@ -46,6 +46,24 @@
       <template slot="content">说点什么吧</template>
       <r-button>click</r-button>
     </r-popover>
+    <div style="padding-top: 40px">
+      <r-popover trigger="hover">
+        <template slot="content">说点什么吧</template>
+        <r-button>click</r-button>
+      </r-popover>
+      <r-popover position="bottom" trigger="hover">
+        <template slot="content">说点什么吧</template>
+        <r-button>click</r-button>
+      </r-popover>
+      <r-popover position="left" trigger="hover">
+        <template slot="content">说点什么吧</template>
+        <r-button>click</r-button>
+      </r-popover>
+      <r-popover position="right" trigger="hover">
+        <template slot="content">说点什么吧</template>
+        <r-button>click</r-button>
+      </r-popover>
+    </div>
   </div>
   <script src="./src/app.js"></script>
 </body>

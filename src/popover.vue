@@ -1,5 +1,5 @@
 <template>
-  <div class="popover" @click="trigger" ref="popover">
+  <div class="popover" ref="popover">
     <div
       class="content-container"
       v-if="visible"
@@ -29,40 +29,77 @@ export default {
         return ["top", "bottom", "left", "right"].indexOf(val) >= 0;
       },
     },
-  },
-  watch: {
-    visible(val) {
-      if (val) {
-        this.$nextTick(() => {
-          const { contentContainer } = this.$refs;
-          document.body.appendChild(contentContainer);
-          this.setPositionContent();
-          //popover 的 click 触发后冒泡到 document，期待在 $nextTick 中给 document 添加 click 监听会在冒泡后执行，但并没有，所以使用 setTimeout
-          setTimeout(() => {
-            document.addEventListener("click", this.eventHandler);
-          }, 0);
-        });
-      } else {
-        document.removeEventListener("click", this.eventHandler);
-      }
+    trigger: {
+      type: String,
+      default: "click",
+      validator(val) {
+        return ["click", "hover"].indexOf(val) >= 0;
+      },
     },
+  },
+  mounted() {
+    if (this.trigger === "click") {
+      this.$refs.popover.addEventListener("click", this.switchHandler);
+    } else if (this.trigger === "hover") {
+      this.$refs.popover.addEventListener("mouseenter", this.hoverOpen);
+      this.$refs.popover.addEventListener("mouseleave", this.hoverClose);
+    }
+  },
+  destroyed() {
+    if (this.trigger === "click") {
+      this.$refs.popover.removeEventListener("click", this.switchHandler);
+    } else if (this.trigger === "hover") {
+      this.$refs.popover.removeEventListener("mouseenter", this.hoverOpen);
+      this.$refs.popover.removeEventListener("mouseleave", this.hoverClose);
+    }
   },
   methods: {
-    trigger() {
-      this.visible = !this.visible;
+    switchHandler() {
+      if (this.visible === true) {
+        this.close();
+      } else {
+        this.open();
+      }
+    },
+    hoverOpen() {
+      this.visible = true;
+      this.$nextTick(() => {
+        this.setPositionContent();
+      });
+    },
+
+    hoverClose() {
+      this.visible = false;
+    },
+    open() {
+      this.visible = true;
+      this.$nextTick(() => {
+        this.setPositionContent();
+        //popover 的 click 触发后冒泡到 document，期待在 $nextTick 中给 document 添加 click 监听会在冒泡后执行，但并没有，所以使用 setTimeout
+        setTimeout(() => {
+          document.addEventListener("click", this.eventHandler);
+        }, 0);
+        console.log(111);
+      });
+    },
+    close() {
+      this.visible = false;
+      document.removeEventListener("click", this.eventHandler);
+      console.log(222);
     },
     eventHandler(e) {
+      console.log("?");
       if (!this.$refs.contentContainer.contains(e.target)) {
-        this.visible = false;
+        this.close();
       }
     },
     setPositionContent() {
       const { triggerContainer, contentContainer } = this.$refs;
+      document.body.appendChild(contentContainer);
       let { height, width, left, top } =
         triggerContainer.getBoundingClientRect();
       let { height: cHeight, width: cWidth } =
         contentContainer.getBoundingClientRect();
-
       const positionMap = {
         top: {
           top: top + window.scrollY,
