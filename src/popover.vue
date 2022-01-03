@@ -6,7 +6,7 @@
       ref="contentContainer"
       :class="[`position-${position}`]"
     >
-      <slot name="content"></slot>
+      <slot name="content" :close="close"></slot>
     </div>
     <span class="trigger-container" ref="triggerContainer">
       <slot></slot>
@@ -41,16 +41,16 @@ export default {
     if (this.trigger === "click") {
       this.$refs.popover.addEventListener("click", this.switchHandler);
     } else if (this.trigger === "hover") {
-      this.$refs.popover.addEventListener("mouseenter", this.hoverOpen);
-      this.$refs.popover.addEventListener("mouseleave", this.hoverClose);
+      this.$refs.popover.addEventListener("mouseenter", this.open);
+      this.$refs.popover.addEventListener("mouseleave", this.close);
     }
   },
   destroyed() {
     if (this.trigger === "click") {
       this.$refs.popover.removeEventListener("click", this.switchHandler);
     } else if (this.trigger === "hover") {
-      this.$refs.popover.removeEventListener("mouseenter", this.hoverOpen);
-      this.$refs.popover.removeEventListener("mouseleave", this.hoverClose);
+      this.$refs.popover.removeEventListener("mouseenter", this.open);
+      this.$refs.popover.removeEventListener("mouseleave", this.close);
     }
   },
   methods: {
@@ -61,16 +61,6 @@ export default {
         this.open();
       }
     },
-    hoverOpen() {
-      this.visible = true;
-      this.$nextTick(() => {
-        this.setPositionContent();
-      });
-    },
-
-    hoverClose() {
-      this.visible = false;
-    },
     open() {
       this.visible = true;
       this.$nextTick(() => {
@@ -79,16 +69,13 @@ export default {
         setTimeout(() => {
           document.addEventListener("click", this.eventHandler);
         }, 0);
-        console.log(111);
       });
     },
     close() {
       this.visible = false;
       document.removeEventListener("click", this.eventHandler);
-      console.log(222);
     },
     eventHandler(e) {
-      console.log("?");
       if (!this.$refs.contentContainer.contains(e.target)) {
         this.close();
       }
@@ -157,62 +144,70 @@ $border-color: #333;
   &.position-top {
     transform: translateY(-100%);
     margin-top: -10px;
+    &::after,
+    &::before {
+      left: 50%;
+      border-bottom: none;
+      transform: translateX(-50%);
+    }
     &::before {
       border-top-color: $border-color;
       top: 101%;
-      left: 50%;
-      transform: translateX(-50%);
     }
     &::after {
       border-top-color: white;
       top: calc(101% - 1px);
-      left: 50%;
-      transform: translateX(-50%);
     }
   }
   &.position-bottom {
     margin-top: 10px;
+    &::after,
+    &::before {
+      left: 50%;
+      transform: translateX(-50%);
+      border-top: none;
+    }
     &::before {
       border-bottom-color: $border-color;
       bottom: 101%;
-      left: 50%;
-      transform: translateX(-50%);
     }
     &::after {
       border-bottom-color: white;
       bottom: calc(101% - 1px);
-      left: 50%;
-      transform: translateX(-50%);
     }
   }
   &.position-left {
     margin-left: -10px;
+    &::after,
+    &::before {
+      top: 50%;
+      transform: translateY(-50%);
+      border-right: none;
+    }
     &::before {
       border-left-color: $border-color;
       left: 100%;
-      top: 50%;
-      transform: translateY(-50%);
     }
     &::after {
       border-left-color: white;
       left: calc(100% - 1px);
-      top: 50%;
-      transform: translateY(-50%);
     }
   }
   &.position-right {
     margin-left: 10px;
+    &::after,
+    &::before {
+      top: 50%;
+      transform: translateY(-50%);
+      border-left: none;
+    }
     &::before {
       border-right-color: $border-color;
-      top: 50%;
       right: 100%;
-      transform: translateY(-50%);
     }
     &::after {
       border-right-color: white;
-      top: 50%;
       right: calc(100% - 1px);
-      transform: translateY(-50%);
     }
   }
 }

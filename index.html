@@ -31,7 +31,7 @@
 <body>
   <div id="app">
     <r-popover>
-      <template slot="content" >说点什么吧</template>
+      <template slot="content" slot-scope="{close}">说点什么吧 <r-button @click="close">close</-button></template>
       <r-button>click</r-button>
     </r-popover>
     <r-popover position="bottom">
