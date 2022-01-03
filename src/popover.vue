@@ -1,11 +1,6 @@
 <template>
-  <div class="popover" @click.stop="trigger">
-    <div
-      class="content-container"
-      v-if="visible"
-      ref="contentContainer"
-      @click.stop
-    >
+  <div class="popover" @click="trigger" ref="popover">
+    <div class="content-container" v-if="visible" ref="contentContainer">
       <slot name="content"></slot>
     </div>
     <span class="trigger-container" ref="triggerContainer">
@@ -25,13 +20,13 @@ export default {
     visible(val) {
       if (val) {
         this.$nextTick(() => {
-          const {triggerContainer, contentContainer} = this.$refs
+          const { contentContainer } = this.$refs;
           document.body.appendChild(contentContainer);
-          document.addEventListener("click", this.eventHandler);
-          let {height, width, left, top} = triggerContainer.getBoundingClientRect()
-          console.log(triggerContainer.getBoundingClientRect());
-          contentContainer.style.top = top + window.scrollY + 'px'
-          contentContainer.style.left = left + window.scrollX + 'px'
+          this.setPositionContent();
+          //popover 的 click 触发后冒泡到 document，期待在 $nextTick 中给 document 添加 click 监听会在冒泡后执行，但并没有，所以使用 setTimeout
+          setTimeout(() => {
+            document.addEventListener("click", this.eventHandler);
+          }, 0);
         });
       } else {
         document.removeEventListener("click", this.eventHandler);
@@ -39,12 +34,21 @@ export default {
     },
   },
   methods: {
-    trigger(e) {
-      console.log(111);
+    trigger() {
       this.visible = !this.visible;
     },
-    eventHandler() {
-      this.visible = false;
+    eventHandler(e) {
+      if (!this.$refs.contentContainer.contains(e.target)) {
+        this.visible = false;
+        console.log("document click");
+      }
+    },
+    setPositionContent() {
+      const { triggerContainer, contentContainer } = this.$refs;
+      let { height, width, left, top } =
+        triggerContainer.getBoundingClientRect();
+      contentContainer.style.top = top + window.scrollY + "px";
+      contentContainer.style.left = left + window.scrollX + "px";
     },
   },
 };
@@ -63,5 +67,6 @@ export default {
   border: 1px solid red;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
   transform: translateY(-100%);
+  padding: 0.5em 1em;
 }
 </style>
