@@ -40,15 +40,17 @@ export default {
     eventHandler(e) {
       if (!this.$refs.contentContainer.contains(e.target)) {
         this.visible = false;
-        console.log("document click");
       }
     },
     setPositionContent() {
       const { triggerContainer, contentContainer } = this.$refs;
       let { height, width, left, top } =
         triggerContainer.getBoundingClientRect();
+      let { height: cHeight, width: cWidth } =
+        contentContainer.getBoundingClientRect();
+        console.log('cWidth', cWidth, width);
       contentContainer.style.top = top + window.scrollY + "px";
-      contentContainer.style.left = left + window.scrollX + "px";
+      contentContainer.style.left = left - ((cWidth - width) / 2) + window.scrollX + "px";
     },
   },
 };
@@ -62,11 +64,38 @@ export default {
     display: inline-block;
   }
 }
+$border-radius: 4px;
+$border-color: #333;
 .content-container {
   position: absolute;
-  border: 1px solid red;
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+  border: 1px solid $border-color;
+  // box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
   transform: translateY(-100%);
   padding: 0.5em 1em;
+  border-radius: $border-radius;
+  margin-top: -10px;
+  word-break: break-all;
+  max-width: 20em;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.5));
+  background: white;
+  &::before,
+  &::after {
+    content: "";
+    display: block;
+    height: 0px;
+    width: 0px;
+    border: 8px solid transparent;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  &::before {
+    border-top-color: $border-color;
+    top: 101%;
+  }
+  &::after {
+    border-top-color: white;
+    top: calc(101% - 1px);
+  }
 }
 </style>
