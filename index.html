@@ -16,11 +16,13 @@
     #app {
       padding: 4em
     }
-    .box{
+
+    .box {
       padding-top: 5px;
       overflow: hidden;
     }
-    body{
+
+    body {
       padding-top: 5em;
     }
   </style>
@@ -28,12 +30,22 @@
 
 <body>
   <div id="app">
-    <div @click="xxx" class="box">
-      <r-popover>
-        <template slot="content">说点什么吧</template>
-        <r-button>click</r-button>
-      </r-popover>
-    </div>
+    <r-popover>
+      <template slot="content">说点什么吧</template>
+      <r-button>click</r-button>
+    </r-popover>
+    <r-popover position="bottom">
+      <template slot="content">说点什么吧</template>
+      <r-button>click</r-button>
+    </r-popover>
+    <r-popover position="left">
+      <template slot="content">说点什么吧</template>
+      <r-button>click</r-button>
+    </r-popover>
+    <r-popover position="right">
+      <template slot="content">说点什么吧</template>
+      <r-button>click</r-button>
+    </r-popover>
   </div>
   <script src="./src/app.js"></script>
 </body>

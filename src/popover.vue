@@ -1,6 +1,11 @@
 <template>
   <div class="popover" @click="trigger" ref="popover">
-    <div class="content-container" v-if="visible" ref="contentContainer">
+    <div
+      class="content-container"
+      v-if="visible"
+      ref="contentContainer"
+      :class="[`position-${position}`]"
+    >
       <slot name="content"></slot>
     </div>
     <span class="trigger-container" ref="triggerContainer">
@@ -15,6 +20,15 @@ export default {
     return {
       visible: false,
     };
+  },
+  props: {
+    position: {
+      type: String,
+      default: "top",
+      validator(val) {
+        return ["top", "bottom", "left", "right"].indexOf(val) >= 0;
+      },
+    },
   },
   watch: {
     visible(val) {
@@ -48,9 +62,27 @@ export default {
         triggerContainer.getBoundingClientRect();
       let { height: cHeight, width: cWidth } =
         contentContainer.getBoundingClientRect();
-        console.log('cWidth', cWidth, width);
-      contentContainer.style.top = top + window.scrollY + "px";
-      contentContainer.style.left = left - ((cWidth - width) / 2) + window.scrollX + "px";
+
+      const positionMap = {
+        top: {
+          top: top + window.scrollY,
+          left: left - (cWidth - width) / 2 + window.scrollX,
+        },
+        bottom: {
+          top: top + window.scrollY + height,
+          left: left - (cWidth - width) / 2 + window.scrollX,
+        },
+        left: {
+          top: top - (cHeight - height) / 2 + window.scrollY,
+          left: left - cWidth + window.scrollX,
+        },
+        right: {
+          top: top - (cHeight - height) / 2 + window.scrollY,
+          left: left + width + window.scrollX,
+        },
+      };
+      contentContainer.style.top = positionMap[this.position].top + "px";
+      contentContainer.style.left = positionMap[this.position].left + "px";
     },
   },
 };
@@ -70,10 +102,8 @@ $border-color: #333;
   position: absolute;
   border: 1px solid $border-color;
   // box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
-  transform: translateY(-100%);
   padding: 0.5em 1em;
   border-radius: $border-radius;
-  margin-top: -10px;
   word-break: break-all;
   max-width: 20em;
   filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.5));
@@ -86,16 +116,67 @@ $border-color: #333;
     width: 0px;
     border: 8px solid transparent;
     position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
   }
-  &::before {
-    border-top-color: $border-color;
-    top: 101%;
+  &.position-top {
+    transform: translateY(-100%);
+    margin-top: -10px;
+    &::before {
+      border-top-color: $border-color;
+      top: 101%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    &::after {
+      border-top-color: white;
+      top: calc(101% - 1px);
+      left: 50%;
+      transform: translateX(-50%);
+    }
   }
-  &::after {
-    border-top-color: white;
-    top: calc(101% - 1px);
+  &.position-bottom {
+    margin-top: 10px;
+    &::before {
+      border-bottom-color: $border-color;
+      bottom: 101%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    &::after {
+      border-bottom-color: white;
+      bottom: calc(101% - 1px);
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+  &.position-left {
+    margin-left: -10px;
+    &::before {
+      border-left-color: $border-color;
+      left: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    &::after {
+      border-left-color: white;
+      left: calc(100% - 1px);
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+  &.position-right {
+    margin-left: 10px;
+    &::before {
+      border-right-color: $border-color;
+      top: 50%;
+      right: 100%;
+      transform: translateY(-50%);
+    }
+    &::after {
+      border-right-color: white;
+      top: 50%;
+      right: calc(100% - 1px);
+      transform: translateY(-50%);
+    }
   }
 }
 </style>
