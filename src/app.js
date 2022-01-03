@@ -47,6 +47,9 @@ let app = new Vue({
   created() {
   },
   methods: {
+    xxx(){
+      console.log('xxx');
+    },
     showToast() {
       this.$toast({
         propsData: {

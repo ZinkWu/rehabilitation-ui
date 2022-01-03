@@ -12,18 +12,29 @@
       padding: 0;
       box-sizing: border-box;
     }
-    #app{
-      padding: 2em
+
+    #app {
+      padding: 4em
+    }
+    .box{
+      border: 1px solid red;
+      padding-top: 5px;
+      overflow: hidden;
+    }
+    body{
+      padding-top: 5em;
     }
   </style>
 </head>
 
 <body>
   <div id="app">
-    <r-popover>
-      <template slot="content">hello</template>
-      <r-button>click</r-button>
-    </r-popover>
+    <div @click="xxx" class="box">
+      <r-popover>
+        <template slot="content">hello</template>
+        <r-button>click</r-button>
+      </r-popover>
+    </div>
   </div>
   <script src="./src/app.js"></script>
 </body>
