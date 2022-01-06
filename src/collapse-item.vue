@@ -1,9 +1,9 @@
 <template>
   <div class="collapseItem">
-    <div class="title" @click="fold = !fold">
+    <div class="title" @click="clickHandler">
       {{ title }}
     </div>
-    <div class="content" v-if="fold">
+    <div class="content" v-if="unfold">
       <slot></slot>
     </div>
   </div>
@@ -11,16 +11,59 @@
 
 <script>
 export default {
+  inject: ["activeName", "accordion"],
   props: {
     title: {
+      type: String,
+      required: true,
+    },
+    name: {
       type: String,
       required: true,
     },
   },
   data() {
     return {
-      fold: false,
+      unfold: false,
     };
+  },
+  watch:{
+    activeName(val){
+      if(this.accordion){
+        if(val.indexOf(this.name) < 0){
+          this.close()
+        }
+      }
+    }
+  },
+  methods: {
+    clickHandler() {
+      if(this.unfold){
+        this.close()
+      }else{
+        this.open()
+      }
+      this.$emit("actived", this.activeName);
+    },
+    open() {
+      this.unfold = true
+      if(this.accordion){
+        this.activeName.pop()
+        this.activeName.push(this.name)
+      }else{
+        this.activeName.push(this.name)
+      }
+    },
+    close() {
+      this.unfold = false;
+      const index = this.activeName.indexOf(this.name)
+      if(index >= 0){
+        this.activeName.splice(index, 1)
+      }
+    },
+  },
+  mounted() {
+    this.unfold = this.activeName.indexOf(this.name) >= 0;
   },
 };
 </script>

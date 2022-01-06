@@ -46,6 +46,7 @@ let app = new Vue({
   data() {
     return {
       selectedTab: 'tab3',
+      active: ["1"]
     }
   },
   created() {
@@ -53,6 +54,9 @@ let app = new Vue({
   methods: {
     xxx(){
       console.log('xxx');
+    },
+    x(v){
+      console.log(v);
     },
     showToast() {
       this.$toast({

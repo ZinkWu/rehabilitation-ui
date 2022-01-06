@@ -26,7 +26,7 @@ export default {
       type: [String, Number],
       required: true,
     },
-    // TODO
+    // TODO:纵向显示
     direction: {
       type: String,
       default: "Horizontal",
