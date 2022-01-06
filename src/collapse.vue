@@ -6,7 +6,7 @@
 
 <script>
 export default {
-   model: {
+  model: {
     prop: "activeName",
     event: "avtived",
   },
@@ -21,19 +21,19 @@ export default {
       required: false,
     },
   },
-  provide(){
+  provide() {
     return {
       activeName: this.activeName,
-      accordion: this.accordion
-    }
-  }
+      accordion: this.accordion,
+    };
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 $gray: #ddd;
 $border-radius: 4px;
-.collapse{
+.collapse {
   border: 1px solid $gray;
   border-radius: $border-radius;
 }

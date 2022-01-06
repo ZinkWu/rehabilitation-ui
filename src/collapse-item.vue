@@ -3,7 +3,7 @@
     <div class="title" @click="clickHandler">
       {{ title }}
     </div>
-    <div class="content" v-if="unfold">
+    <div class="content" v-show="unfold">
       <slot></slot>
     </div>
   </div>
@@ -27,42 +27,42 @@ export default {
       unfold: false,
     };
   },
-  watch:{
-    activeName(val){
-      if(this.accordion){
-        if(val.indexOf(this.name) < 0){
-          this.close()
+  watch: {
+    activeName(val) {
+      if (this.accordion) {
+        if (val.indexOf(this.name) < 0) {
+          this.close();
         }
       }
-    }
+    },
   },
   methods: {
     clickHandler() {
-      if(this.unfold){
-        this.close()
-      }else{
-        this.open()
+      if (this.unfold) {
+        this.close();
+      } else {
+        this.open();
       }
       this.$emit("actived", this.activeName);
     },
     open() {
-      this.unfold = true
-      if(this.accordion){
-        this.activeName.pop()
-        this.activeName.push(this.name)
-      }else{
-        this.activeName.push(this.name)
+      this.unfold = true;
+      if (this.accordion) {
+        this.activeName.pop();
+        this.activeName.push(this.name);
+      } else {
+        this.activeName.push(this.name);
       }
     },
     close() {
       this.unfold = false;
-      const index = this.activeName.indexOf(this.name)
-      if(index >= 0){
-        this.activeName.splice(index, 1)
+      const index = this.activeName.indexOf(this.name);
+      if (index >= 0) {
+        this.activeName.splice(index, 1);
       }
     },
   },
-  mounted() {
+  created() {
     this.unfold = this.activeName.indexOf(this.name) >= 0;
   },
 };
@@ -98,6 +98,7 @@ $border-radius: 4px;
   }
   & > .content {
     padding: 8px 8px;
+    transition: all 1s;
   }
 }
 </style>

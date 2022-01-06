@@ -52,12 +52,6 @@ let app = new Vue({
   created() {
   },
   methods: {
-    xxx(){
-      console.log('xxx');
-    },
-    x(v){
-      console.log(v);
-    },
     showToast() {
       this.$toast({
         propsData: {

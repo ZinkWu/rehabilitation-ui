@@ -94,16 +94,10 @@ export default {
       this.close();
     },
     resetLineHeight() {
-      // in plugin.js, vm.$mount() before document.body.appendChild(), async render
-      // this.$nextTick in test env error
       this.$nextTick(() => {
         this.$refs.line.style.height =
           this.$refs.toast.getBoundingClientRect().height + "px";
       });
-      // setTimeout(() => {
-      //   this.$refs.line.style.height =
-      //     this.$refs.toast.getBoundingClientRect().height + "px";
-      // }, 0);
     },
   },
 };
