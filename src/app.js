@@ -17,6 +17,8 @@ import TabsItem from './tabs-item'
 import TabsBody from './tabs-body'
 import TabsPanels from './tabs-panels'
 import Popover from './popover'
+import Collapse from './collapse';
+import CollapseItem from './collapse-item';
 
 Vue.component('r-button', Button)
 Vue.component('r-icon', Icon)
@@ -36,6 +38,8 @@ Vue.component('r-tabs-item', TabsItem)
 Vue.component('r-tabs-body', TabsBody)
 Vue.component('r-tabs-panels', TabsPanels)
 Vue.component('r-popover', Popover)
+Vue.component('r-collapse', Collapse)
+Vue.component('r-collapse-item', CollapseItem)
 
 let app = new Vue({
   el: "#app",

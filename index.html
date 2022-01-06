@@ -30,40 +30,11 @@
 
 <body>
   <div id="app">
-    <r-popover>
-      <template slot="content" slot-scope="{close}">说点什么吧 <r-button @click="close">close</-button></template>
-      <r-button>click</r-button>
-    </r-popover>
-    <r-popover position="bottom">
-      <template slot="content">说点什么吧</template>
-      <r-button>click</r-button>
-    </r-popover>
-    <r-popover position="left">
-      <template slot="content">说点什么吧</template>
-      <r-button>click</r-button>
-    </r-popover>
-    <r-popover position="right">
-      <template slot="content">说点什么吧</template>
-      <r-button>click</r-button>
-    </r-popover>
-    <div style="padding-top: 40px">
-      <r-popover trigger="hover">
-        <template slot="content">说点什么吧</template>
-        <r-button>click</r-button>
-      </r-popover>
-      <r-popover position="bottom" trigger="hover">
-        <template slot="content">说点什么吧</template>
-        <r-button>click</r-button>
-      </r-popover>
-      <r-popover position="left" trigger="hover">
-        <template slot="content">说点什么吧</template>
-        <r-button>click</r-button>
-      </r-popover>
-      <r-popover position="right" trigger="hover">
-        <template slot="content">说点什么吧</template>
-        <r-button>click</r-button>
-      </r-popover>
-    </div>
+    <r-collapse>
+      <r-collapse-item title="title 1">content 1</r-collapse-item>
+      <r-collapse-item title="title 2">content 2</r-collapse-item>
+      <r-collapse-item title="title 3">content 3</r-collapse-item>
+    </r-collapse>  
   </div>
   <script src="./src/app.js"></script>
 </body>
