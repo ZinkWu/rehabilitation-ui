@@ -8,7 +8,7 @@
 export default {
   model: {
     prop: "activeName",
-    event: "avtived",
+    event: "actived",
   },
   props: {
     activeName: {

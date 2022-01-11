@@ -1,10 +1,10 @@
 const expect = chai.expect;
 import Vue from 'vue'
-import Tabs from '../src/tabs'
-import TabsNav from '../src/tabs-nav'
-import TabsItem from '../src/tabs-item'
-import TabsBody from '../src/tabs-body'
-import TabsPanels from '../src/tabs-panels'
+import Tabs from '../src/tabs/tabs'
+import TabsNav from '../src/tabs/tabs-nav'
+import TabsItem from '../src/tabs/tabs-item'
+import TabsBody from '../src/tabs/tabs-body'
+import TabsPanels from '../src/tabs/tabs-panels'
 
 Vue.config.productionTip = false
 Vue.config.devtools = false

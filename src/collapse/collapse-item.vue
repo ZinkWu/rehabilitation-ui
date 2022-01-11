@@ -3,7 +3,7 @@
     <div class="title" @click="clickHandler">
       {{ title }}
     </div>
-    <div class="content" v-show="unfold">
+    <div class="content" v-if="unfold">
       <slot></slot>
     </div>
   </div>
