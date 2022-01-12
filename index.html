@@ -31,6 +31,9 @@
 
 <body>
   <div id="app">
+    <r-button :disabled="true" @click="f">123</r-button>
+    <r-button @click="f">123</r-button>
+    
     <r-collapse v-model="active" accordion>
       <r-collapse-item title="title 1" name="1">content 1</r-collapse-item>
       <r-collapse-item title="title 2" name="2">content 2</r-collapse-item>
