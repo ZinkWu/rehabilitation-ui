@@ -15,6 +15,31 @@ title: Button 按钮
 <r-button icon="settings" iconPosition="right">icon设置位置</r-button>
 <r-button :loading="loading" @click="loading = !loading">click me</r-button>
 <r-button disabled>disabled</r-button>
+
+<!-- 按钮组 -->
+<r-button-group>
+  <r-button>上一页</r-button>
+  <r-button>更多</r-button>
+  <r-button>下一页</r-button>
+</r-button-group>
+```
+
+```JavaScript
+<script>
+import {RButton, RButtonGroup} from 'rehabilitation-ui';
+
+export default {
+  components: {
+    'r-button': RButton
+    'r-button-group': RButtonGroup
+  },
+  data(){
+    return {
+      loading: false
+    }
+  }
+}
+</script>
 ```
 
 ## Attributes
