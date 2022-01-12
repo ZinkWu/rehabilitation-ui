@@ -26,6 +26,7 @@ jobs:
       - run: chmod +x deploy.sh
       - run: ./deploy.sh
   build-and-deploy:
+    needs: build-and-test
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
