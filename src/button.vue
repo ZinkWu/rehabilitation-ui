@@ -2,7 +2,8 @@
   <button
     @click="$emit('click')"
     class="r-button"
-    :class="{ [`icon-${iconPosition}`]: true }"
+    :class="{ [`icon-${iconPosition}`]: true, disabled }"
+    :disabled="disabled"
   >
     <r-icon v-if="icon && !loading" class="icon" :name="icon"></r-icon>
     <r-icon v-if="loading" class="loading icon" name="loading"></r-icon>
@@ -19,6 +20,10 @@ export default {
     rIcon: Icon,
   },
   props: {
+    disabled: {
+      type: Boolean,
+      default: false
+    },
     loading: {
       type: Boolean,
       default: false,
@@ -73,6 +78,15 @@ $border-color-hover: #666;
   justify-content: center;
   align-items: center;
   vertical-align: middle;
+  &.disabled {
+    background: #ddd;
+    &:hover {
+      border-color: $border-color;
+    }
+    &:active {
+      background: #ddd;
+    }
+  }
 
   > .icon {
     order: 1;
