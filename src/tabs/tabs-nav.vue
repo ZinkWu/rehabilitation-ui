@@ -21,9 +21,10 @@ export default {
       this.eventBus.$on("resetLine", (vm) => {
         // TODO: 这里有bug，getBoundingClientRect是相对视口的位置，如果外部元素有padding之类，分割线显示位置不正常
         let { left, width } = vm.$el.getBoundingClientRect();
+        console.log(vm.$el.getBoundingClientRect());
         let lineEl = this.$refs.line;
         lineEl.style.width = `${width}px`;
-        lineEl.style.transform = `translateX(${left}px)`;
+        lineEl.style.transform = `translateX(${vm.$el.offsetLeft}px)`;
         this.lineVisible = true;
       });
     }

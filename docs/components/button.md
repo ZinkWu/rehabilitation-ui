@@ -2,8 +2,9 @@
 title: Button 按钮
 ---
 
-# 按钮 Button
+# Button 按钮
 
+## 基本用法
 <ClientOnly>
   <ButtonDocs></ButtonDocs>
 </ClientOnly>
@@ -15,3 +16,11 @@ title: Button 按钮
 <r-button :loading="loading" @click="loading = !loading">click me</r-button>
 <r-button disabled>disabled</r-button>
 ```
+
+## Attributes
+|参数| 说明 |  类型  | 可选值 | 默认值 | required
+| :-------------: |:-------------:| :-----:|:-----:|:-----:|:-----:|
+| icon         | 设置内置的icon  | String      | setting，info，left，right，download，loading，thumbs-up，down| -- | false
+| iconPosition | 图标位置        | String      | left、right | left  | false
+| loading      | 加载状态        | Boolean     | true、false | false | false
+| disabled     | 是否禁用        | Boolean     | true、false | false | false
