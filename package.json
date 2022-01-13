@@ -1,6 +1,6 @@
 {
   "name": "rehabilitation-ui",
-  "version": "0.0.2",
+  "version": "1.0.1",
   "description": "康复训练项目",
   "main": "dist/index.js",
   "scripts": {
