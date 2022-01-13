@@ -78,7 +78,11 @@ describe('Input', () => {
           value: { value: 'test' }, enumerable: true
         })
         inputEl.dispatchEvent(evnet)
-        expect(callback).to.have.been.calledWith('test')
+        if(eventName === 'focus' || eventName === 'blur'){
+          expect(callback).to.have.been.called
+        }else{
+          expect(callback).to.have.been.calledWith('test')
+        }
       })
     })
   })

@@ -3,6 +3,11 @@ module.exports = {
   title: 'rehabilitation-ui',
   description: 'a website',
   themeConfig: {
+    nav: [
+      { text: '主页', link: '/' },
+      { text: '文档', link: '/install/' },
+      { text: 'GitHub', link: 'https://github.com/zinkwu/rehabilitation-ui/' },
+    ],
     sidebar: [
       '/',
       '/install/',
