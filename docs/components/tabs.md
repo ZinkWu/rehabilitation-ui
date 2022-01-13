@@ -9,8 +9,8 @@ title: Tabs 标签页
   <TabsDocs></TabsDocs>
 </ClientOnly>
 
-```vue
-<r-tabs :selected="selected">
+```Vue
+<r-tabs v-model="selected">
   <r-tabs-nav>
     <r-tabs-item name="1">tab 1</r-tabs-item>
     <r-tabs-item name="2" disabled>tab 2</r-tabs-item>
@@ -39,7 +39,7 @@ export default {
 ### Tabs
 |       参数      |      说明      |  类型   | 可选值 | 默认值 | required
 | :-------------: |:-------------:| :-----:|:-----:|:-----:|:-----:|
-| selected | 当前选中 | String、Number | - | - | true
+| v-model/selected | 当前选中 | String、Number | - | - | true
 
 ### TabsItem
 |       参数      |      说明      |  类型   | 可选值 | 默认值 | required

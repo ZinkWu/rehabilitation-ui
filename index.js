@@ -9,7 +9,7 @@ import RHeader from './src/layout/header'
 import RSider from './src/layout/sider'
 import RContent from './src/layout/content'
 import RFooter from './src/layout/footer'
-import RToast from './src/plugin'
+import Toast from './src/plugin'
 import RTabs from './src/tabs/tabs'
 import RTabsNav from './src/tabs/tabs-nav'
 import RTabsItem from './src/tabs/tabs-item'
@@ -31,7 +31,7 @@ export {
   RSider,
   RContent,
   RFooter,
-  RToast,
+  Toast,
   RTabs,
   RTabsNav,
   RTabsItem,

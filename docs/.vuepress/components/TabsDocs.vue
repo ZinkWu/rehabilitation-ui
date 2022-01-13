@@ -1,6 +1,6 @@
 <template>
   <div>
-    <r-tabs :selected="selected">
+    <r-tabs v-model="selected">
       <r-tabs-nav>
         <r-tabs-item name="1">tab 1</r-tabs-item>
         <r-tabs-item name="2" disabled>tab 2</r-tabs-item>

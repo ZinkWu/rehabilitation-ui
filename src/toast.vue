@@ -29,7 +29,7 @@ export default {
     },
     autoCloseDelay: {
       type: Number,
-      default: 3,
+      default: 2,
       required: false,
     },
     closeButton: {
@@ -140,6 +140,7 @@ $animation-duration: 0.3s;
   position: fixed;
   left: 50%;
   transform: translateX(-50%);
+  z-index: 999;
   &.position-top {
     top: 0;
     & > .toast {

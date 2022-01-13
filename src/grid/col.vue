@@ -18,10 +18,12 @@ export default {
   props: {
     span: {
       type: [Number, String],
+      default: 24,
       required: false,
     },
     offset: {
       type: [Number, String],
+      default: 0,
       required: false,
     },
     pad: {

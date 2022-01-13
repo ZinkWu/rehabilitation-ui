@@ -9,7 +9,7 @@ title: Button 按钮
   <ButtonDocs></ButtonDocs>
 </ClientOnly>
 
-```vue
+```Vue
 <r-button>按钮</r-button>
 <r-button icon="settings">含有icon</r-button>
 <r-button icon="settings" iconPosition="right">icon设置位置</r-button>
@@ -43,6 +43,8 @@ export default {
 ```
 
 ## Attributes
+
+### Button
 |参数| 说明 |  类型  | 可选值 | 默认值 | required
 | :-------------: |:-------------:| :-----:|:-----:|:-----:|:-----:|
 | icon         | 设置内置的icon  | String      | setting，info，left，right，download，loading，thumbs-up，down| -- | false
